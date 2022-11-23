@@ -21,16 +21,18 @@
 #COPY --from=publish /app/publish .
 #ENTRYPOINT ["dotnet", "Isw3-integrador.Controller.dll"]
 
+
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
 WORKDIR /App
+EXPOSE 5000
 EXPOSE 80
 EXPOSE 443
  #Copy everything
 COPY . ./
 #Restore as distinct layers
-RUN dotnet build "Isw3-integrador.Controller.csproj" -c Release -o /app/build
+RUN dotnet restore
  #Build and publish a release
-RUN dotnet publish "Isw3-integrador.Controller.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish -c Release -o out
 
 #Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
