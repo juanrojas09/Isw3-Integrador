@@ -41,8 +41,9 @@ RUN dotnet publish "Isw3-integrador.Controller.csproj" -c Release -o /app/publis
 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
+FROM base AS final
 WORKDIR /app
-COPY --from=build-env /app/out .
+COPY --from=publish /app/publish .
 
 # Command used to start the project
 ENTRYPOINT ["dotnet", "Isw3-integrador.Controller.dll"]
