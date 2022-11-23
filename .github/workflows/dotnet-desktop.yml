@@ -44,7 +44,7 @@ jobs:
         push: true
         
         tags: |
-         ${{secrets.USERNAME}}/new_repository/imagename:tag
+         tags: ${{ env.REGISTRY }}/${{ github.repository }}/server:${{ github.sha }}
 
 
     - name: Image digest
