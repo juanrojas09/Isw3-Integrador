@@ -7,8 +7,8 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["Isw3-integrador.Controller/Isw3-integrador.Controller.csproj", "Isw3-integrador.Controller/"]
-RUN dotnet restore "Isw3-integrador.Controller/Isw3-integrador.Controller.csproj"
+COPY ["Isw3-integrador.Controller/Isw3-integrador.Controller.csproj.user", "Isw3-integrador.Controller/"]
+RUN dotnet restore "Isw3-integrador.Controller/Isw3-integrador.Controller.csproj.user"
 COPY . .
 WORKDIR "/src/Isw3-integrador.Controller"
 RUN dotnet build "Isw3-integrador.Controller.csproj" -c Release -o /app/build
