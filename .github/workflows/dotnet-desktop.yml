@@ -39,7 +39,7 @@ jobs:
       id: build-and-push
       uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
       with:
-        context: ./isw3-integrador.Controller
+        context: Isw3-Integrador/Isw3-integrador.Controller/Isw3-integrador.Controller.csproj
         push: true
         tags: |
          juanrojas09/integrador2-isw3-dotnet:latest
