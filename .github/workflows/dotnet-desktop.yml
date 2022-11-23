@@ -44,7 +44,7 @@ jobs:
         push: true
         
         tags: |
-         tags: ${{ env.REGISTRY }}/integrador/final:latest
+          ${{ env.REGISTRY }}/integrador/final:latest
 
 
     - name: Image digest
