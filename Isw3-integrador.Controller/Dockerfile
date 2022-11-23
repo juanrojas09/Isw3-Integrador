@@ -6,7 +6,7 @@
 #EXPOSE 443
 
 #FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-#WORKDIR /src
+#WORKDIR /src C:\Users\Juan Pablo\source\repos\Isw3-final\Dockerfile
 #COPY ["Isw3-integrador.Controller/Isw3-integrador.Controller.csproj.user", "Isw3-integrador.Controller/"]
 #RUN dotnet restore "Isw3-integrador.Controller/Isw3-integrador.Controller.csproj.user"
 #COPY . .
@@ -28,9 +28,9 @@ EXPOSE 443
  #Copy everything
 COPY . ./
 #Restore as distinct layers
-RUN dotnet restore
+RUN dotnet build "Isw3-integrador.Controller.csproj" -c Release -o /app/build
  #Build and publish a release
-RUN dotnet publish -c Release -o out
+RUN dotnet publish "Isw3-integrador.Controller.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 #Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
