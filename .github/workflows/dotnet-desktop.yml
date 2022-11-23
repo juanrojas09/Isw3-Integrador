@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-    tags: [ v* ]
+    
 env:
   HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
   APP_NAME: ${{ 'dotnet-app2-isw-rojas' }}
@@ -47,7 +47,7 @@ jobs:
         file: Isw3-integrador.Controller/Dockerfile
         push: true
        
-        tags: ${{ steps.meta.outputs.tags }}
+        tags: juanrojas09/integrador-net:latest
         cache-from: type=gha
         cache-to: type=gha,mode=max
         
