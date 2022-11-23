@@ -25,7 +25,7 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: |
-       cd Isw3Test
+       cd Isw3-Test
        dotnet test --no-build --verbosity normal
     - name: Docker build
       uses: docker/setup-buildx-action@v2
