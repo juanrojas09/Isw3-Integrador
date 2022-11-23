@@ -44,20 +44,12 @@ jobs:
         push: true
         
         builder: ${{ steps.buildx.outputs.name }}
-        labels: |
-          org.opencontainers.image.authors=${{ github.repository_owner }}
-          org.opencontainers.image.created=${{ env.BUILD_DATE }}
-          org.opencontainers.image.description=Created from commit ${{ env.GIT_SHA }} and ref ${{ env.GIT_REF }}
-          org.opencontainers.image.ref.name=${{ env.GIT_REF }}
-          org.opencontainers.image.revision=${{ github.sha }}
-          org.opencontainers.image.source=https://github.com/${{ github.repository }}
-          org.opencontainers.image.version=${{ env.BUILD_VER }}
+
         tags: |
-          juanrojas09/integrador2-isw3-dotnet
+         juanrojas09/isw3-integrador:latest
+      
   
-        platforms: linux/amd64
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache
+    
 
 
     - name: Image digest
