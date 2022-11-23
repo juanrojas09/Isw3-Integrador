@@ -43,11 +43,24 @@ jobs:
         file: Isw3-integrador.Controller/Dockerfile
         push: true
         
+        builder: ${{ steps.buildx.outputs.name }}
+        labels: |
+          org.opencontainers.image.authors=${{ github.repository_owner }}
+          org.opencontainers.image.created=${{ env.BUILD_DATE }}
+          org.opencontainers.image.description=Created from commit ${{ env.GIT_SHA }} and ref ${{ env.GIT_REF }}
+          org.opencontainers.image.ref.name=${{ env.GIT_REF }}
+          org.opencontainers.image.revision=${{ github.sha }}
+          org.opencontainers.image.source=https://github.com/${{ github.repository }}
+          org.opencontainers.image.version=${{ env.BUILD_VER }}
         tags: |
-            ${{ env.IMAGE }}:latest
-            ${{ env.IMAGE }}:${{ env.GIT_REF }}
-            ${{ env.IMAGE }}:${{ env.GIT_SHA }}
-            ${{ env.IMAGE }}:${{ env.BUILD_VER }}
+          ${{ env.IMAGE }}:latest
+          ${{ env.IMAGE }}:${{ env.GIT_REF }}
+          ${{ env.IMAGE }}:${{ env.GIT_SHA }}
+          ${{ env.IMAGE }}:${{ env.BUILD_VER }}
+        load: true
+        platforms: linux/amd64
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache
 
 
     - name: Image digest
