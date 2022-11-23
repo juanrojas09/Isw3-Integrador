@@ -57,7 +57,7 @@ jobs:
           ${{ env.IMAGE }}:${{ env.GIT_REF }}
           ${{ env.IMAGE }}:${{ env.GIT_SHA }}
           ${{ env.IMAGE }}:${{ env.BUILD_VER }}
-        load: true
+  
         platforms: linux/amd64
         cache-from: type=local,src=/tmp/.buildx-cache
         cache-to: type=local,dest=/tmp/.buildx-cache
