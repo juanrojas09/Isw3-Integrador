@@ -44,7 +44,8 @@ jobs:
         push: true
         
         tags: |
-          ${{ env.REGISTRY }}/integrador/final:latest
+          ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{steps.get-tags.outputs.tags }}
+            ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
 
 
     - name: Image digest
