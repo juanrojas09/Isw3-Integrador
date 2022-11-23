@@ -22,20 +22,26 @@
 #ENTRYPOINT ["dotnet", "Isw3-integrador.Controller.dll"]
 
 
+
+
+
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
-WORKDIR /App
-EXPOSE 5000
+WORKDIR /app
+
 EXPOSE 80
 EXPOSE 443
- #Copy everything
-COPY . ./
-#Restore as distinct layers
+# Copy csproj and restore as distinct layers
+COPY *.csproj ./
 RUN dotnet restore
- #Build and publish a release
+
+# Copy everything else and build
+COPY . ./
 RUN dotnet publish -c Release -o out
 
-#Build runtime image
+# Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
-WORKDIR /App
-COPY --from=build-env /App/out .
+WORKDIR /app
+COPY --from=build-env /app/out .
+
+# Command used to start the project
 ENTRYPOINT ["dotnet", "Isw3-integrador.Controller.dll"]
