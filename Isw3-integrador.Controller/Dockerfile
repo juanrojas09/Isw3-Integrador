@@ -35,7 +35,7 @@ COPY *.csproj ./
 RUN dotnet restore
 
 # Copy everything else and build
-COPY . ./
+COPY . .
 FROM build AS publish
 RUN dotnet publish "Isw3-integrador.Controller.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
@@ -47,3 +47,5 @@ COPY --from=publish /app/publish .
 
 # Command used to start the project
 ENTRYPOINT ["dotnet", "Isw3-integrador.Controller.dll"]
+
+
