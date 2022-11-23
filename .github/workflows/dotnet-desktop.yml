@@ -39,11 +39,12 @@ jobs:
       id: build-and-push
       uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
       with:
-        context: .
-        file: ./Dockerfile
+        context: Isw3-Integrador.Controller
+        file: Isw3-Integrador.Controller/Dockerfile
         push: true
+        
         tags: |
-         juanrojas09/integrador2-isw3-dotnet:latest
+         ${{ env.REGISTRY }}/${{ github.repository }}/server:${{ github.sha }}
 
 
     - name: Image digest
