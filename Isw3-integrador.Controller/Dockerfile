@@ -30,16 +30,16 @@ WORKDIR /app
 EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["Isw3-integrador.Controller.csproj", "."]
-RUN dotnet restore "./Isw3-integrador.Controller.csproj"
+COPY ["Isw3-integrador.csproj", "."]
+RUN dotnet restore "./Isw3-integrador.csproj"
 COPY . .
 WORKDIR "/src/."
-RUN dotnet build "Isw3-integrador.Controller.csproj" -c Release -o /app/build
+RUN dotnet build "Isw3-integrador.csproj" -c Release -o /app/build
 FROM build AS publish
-RUN dotnet publish "Isw3-integrador.Controller.csproj" -c Release -o /app/publish
+RUN dotnet publish "Isw3-integrador.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Isw3-integrador.Controller.dll"]
+ENTRYPOINT ["dotnet", "Isw3-integrador.dll"]
 
 
