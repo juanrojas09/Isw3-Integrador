@@ -8,6 +8,8 @@ on:
 env:
   HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
   APP_NAME: ${{ 'dotnet-app2-isw-rojas' }}
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
 jobs:
   build:
 
@@ -44,7 +46,7 @@ jobs:
         file: Isw3-integrador.Controller/Dockerfile
         push: true
        
-        tags: "<registry>/<image>:latest"
+        tags: ${{ steps.meta.outputs.tags }}
         cache-from: type=gha
         cache-to: type=gha,mode=max
         
