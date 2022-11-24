@@ -8,7 +8,7 @@ on:
     
 env:
   HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-  APP_NAME: ${{ 'dotnet-app2-isw-rojas' }}
+  APP_NAME: ${{ 'dotnet-app-isw-rojas' }}
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 jobs:
@@ -68,5 +68,5 @@ jobs:
       
     - name: Heroku Publish
       run: | 
-         heroku container:push web -a 'dotnet-app2-isw-rojas'
-         heroku container:release web -a 'dotnet-app2-isw-rojas'
+         heroku container:push web -a 'dotnet-app-isw-rojas'
+         heroku container:release web -a 'dotnet-app-isw-rojas'
