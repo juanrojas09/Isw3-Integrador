@@ -21,20 +21,20 @@
 #COPY --from=publish /app/publish .
 #ENTRYPOINT ["dotnet", "Isw3-integrador.Controller.dll"]
 
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
 WORKDIR /app
 EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
 
 COPY . ./
 RUN dotnet restore 
-#COPY . .
+COPY . .
+
+
 
 RUN dotnet publish -c Release -o out
-
-#FROM base AS final
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+FROM base AS final
 WORKDIR /app
 COPY  --from=build-env /app/out .
 ENTRYPOINT ["dotnet", "Isw3-integrador.Controller.dll"]
