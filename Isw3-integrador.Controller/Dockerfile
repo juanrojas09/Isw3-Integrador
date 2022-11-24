@@ -33,13 +33,13 @@ WORKDIR /src
 COPY . .
 RUN dotnet restore 
 COPY . .
-WORKDIR "/src/Isw3-integrador.Controller"
+
 RUN dotnet build  -c Release -o /app/build
 FROM build AS publish
 RUN dotnet publish -c Release -o /app/publish
-FROM base AS final
+FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Isw3-integrador.dll"]
+COPY --from=build-env /app/out .
+ENTRYPOINT ["dotnet", "Isw3-final.dll"]
 
 
