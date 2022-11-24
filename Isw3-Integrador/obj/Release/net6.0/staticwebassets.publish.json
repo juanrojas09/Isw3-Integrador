@@ -1,0 +1,23 @@
+{
+  "Version": 1,
+  "Hash": "iH06S6YR7UhgvHz+DHjNMdwcjtA9tpqel57sWjF91R4=",
+  "Source": "Isw3-Integrador.Dao",
+  "BasePath": "_content/Isw3-Integrador.Dao",
+  "Mode": "Default",
+  "ManifestType": "Publish",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\Juan Pablo\\source\\repos\\Isw3-Integrador\\Isw3-Integrador.Models\\Isw3-Integrador.Models.csproj",
+      "Version": 2,
+      "Source": "Isw3-Integrador.Models",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Release;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Release;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

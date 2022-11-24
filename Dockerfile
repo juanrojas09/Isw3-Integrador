@@ -36,5 +36,5 @@ RUN dotnet publish -c Release -o out
 FROM base AS final
 WORKDIR /app
 #COPY  --from=build-env /app/out .
-ENTRYPOINT ["dotnet", "Isw3-Integrador.dll"]
+ENTRYPOINT ["dotnet", "Isw3-integrador.Controller.dll"]
 

@@ -1,0 +1,5 @@
+C:\Users\Juan Pablo\source\repos\Isw3-Integrador\out\Isw3-Integrador.Models.exe
+C:\Users\Juan Pablo\source\repos\Isw3-Integrador\out\Isw3-Integrador.Models.dll
+C:\Users\Juan Pablo\source\repos\Isw3-Integrador\out\Isw3-Integrador.Models.deps.json
+C:\Users\Juan Pablo\source\repos\Isw3-Integrador\out\Isw3-Integrador.Models.runtimeconfig.json
+C:\Users\Juan Pablo\source\repos\Isw3-Integrador\out\Isw3-Integrador.Models.pdb
