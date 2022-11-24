@@ -35,6 +35,6 @@ FROM build AS publish
 RUN dotnet publish   -c Release -o publish
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "Isw3-Integrador.dll"]
 
