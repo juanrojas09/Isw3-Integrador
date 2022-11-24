@@ -29,7 +29,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
 WORKDIR /App
 EXPOSE 5000
  #Copy everything
-COPY . ./
+COPY . .
 #Restore as distinct layers
 RUN dotnet restore
  #Build and publish a release
