@@ -27,15 +27,15 @@ WORKDIR /app
 EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
 
-COPY . .
+COPY . ./
 RUN dotnet restore 
-COPY . .
+#COPY . .
 
 
 
 RUN dotnet publish -c Release -o out
 FROM base AS final
 WORKDIR /app
-#COPY  --from=build-env /app/out .
+COPY  --from=build-env /app/out .
 ENTRYPOINT ["dotnet", "Isw3-integrador.Controller.dll"]
 
