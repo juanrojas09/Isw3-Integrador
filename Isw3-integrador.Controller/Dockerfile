@@ -30,7 +30,7 @@ WORKDIR /app
 EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["Isw3-integrador.csproj", "."]
+COPY . .
 RUN dotnet restore "./Isw3-integrador.csproj"
 COPY . .
 WORKDIR "/src/."
