@@ -25,21 +25,21 @@
 
 
 
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
-WORKDIR /app
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
+WORKDIR /App
+EXPOSE 5000
 EXPOSE 80
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /src
-COPY ["Isw3-integrador.csproj", "."]
-RUN dotnet restore "./Isw3-integrador.csproj"
+EXPOSE 443
+ #Copy everything
 COPY . .
-WORKDIR "/src/."
-RUN dotnet build "Isw3-integrador.csproj" -c Release -o /app/build
-FROM build AS publish
-RUN dotnet publish "Isw3-integrador.csproj" -c Release -o /app/publish
-FROM base AS final
-WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Isw3-integrador.dll"]
+#Restore as distinct layers
+RUN dotnet restore
+ #Build and publish a release
+RUN dotnet publish -c Release -o out
 
+#Build runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:6.0
+WORKDIR /App
+COPY --from=build-env /App/out .
+ENTRYPOINT ["dotnet", "Isw3-Integrador.dll"]
 
