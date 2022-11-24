@@ -29,7 +29,7 @@ WORKDIR /src
 COPY . .
 RUN dotnet restore 
 COPY . .
-WORKD
+
 #RUN dotnet build "Isw3-final.csproj" -c Release -o /app/build
 FROM build AS publish
 RUN dotnet publish  -c Release -o /app/publish
