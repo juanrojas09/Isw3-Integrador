@@ -25,21 +25,19 @@
 
 
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
-WORKDIR /App
-EXPOSE 5000
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+WORKDIR /app
 EXPOSE 80
-EXPOSE 443
- #Copy everything
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+WORKDIR /src
 COPY . .
-#Restore as distinct layers
-RUN dotnet restore
- #Build and publish a release
-RUN dotnet publish -c Release -o out
-
-#Build runtime image
+RUN dotnet restore 
+COPY . .
+WORKDIR "/src/Isw3-integrador.Controller"
+RUN dotnet build  -c Release -o /app/build
+FROM build AS publish
+RUN dotnet publish -c Release -o /app/publish
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
-WORKDIR /App
-COPY --from=build-env /App/out .
-ENTRYPOINT ["dotnet", "Isw3-Integrador.dll"]
-
+WORKDIR /app
+COPY --from=build-env /app/out .
+ENTRYPOINT ["dotnet", "Isw3-final.dll"]
