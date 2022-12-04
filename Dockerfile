@@ -36,7 +36,7 @@ RUN dotnet restore
  COPY . .
 #./Isw3-integrador/
 WORKDIR /source/Isw3-integrador
-RUN dotnet publish -c release -o /app --no-restore
+#RUN dotnet publish -c release -o /app --no-restore
 
 # final stage/image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
