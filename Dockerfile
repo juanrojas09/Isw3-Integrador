@@ -41,7 +41,7 @@ WORKDIR /source/Isw3-integrador
 # final stage/image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 #WORKDIR /app
-COPY --from=build . .
-ENTRYPOINT ["dotnet", "out/Isw3-integrador.Controller.dll]
+COPY --from=build . ./out
+ENTRYPOINT ["dotnet", "Isw3-integrador.Controller.dll]
 
 #
