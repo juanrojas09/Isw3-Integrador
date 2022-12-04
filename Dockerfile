@@ -33,7 +33,7 @@ COPY Isw3-integrador/*.csproj ./Isw3-integrador/
 RUN dotnet restore
 
 # copy everything else and build app
-COPY Isw3-integrador/. .
+ COPY ["Isw3-integrador.Controller/Isw3-integrador.Controller.csproj.user", "Isw3-integrador.Controller/"]
 #./Isw3-integrador/
 WORKDIR /source/Isw3-integrador
 RUN dotnet publish -c release -o /app --no-restore
