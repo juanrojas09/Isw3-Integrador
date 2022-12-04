@@ -29,7 +29,7 @@ WORKDIR /source
 
 # copy csproj and restore as distinct layers
 COPY *.sln .
-COPY Isw3-integrador/*.csproj ./Isw3-integrador/
+COPY . .
 RUN dotnet restore
 
 # copy everything else and build app
