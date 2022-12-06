@@ -47,7 +47,7 @@ jobs:
         context: .
         push: true
        
-        tags: juanrojas09/integrador-net-front:latest
+        tags: juanrojas09/integrador-net:latest
         cache-from: type=gha
         cache-to: type=gha,mode=max
         
